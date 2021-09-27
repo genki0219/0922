@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
 {
     public function index()
     {
-        $items = DB::select('select * from authors');
+        $items = Author::all();
         return view('index', ['items' => $items]);
     }
 }
