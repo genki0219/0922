@@ -20,27 +20,26 @@
       color: white;
     }
 </style>
-@section('title', 'add.blade.php')
+@section('title', 'delete.blade.php')
 
 @section('content')
-@if (count($errors) > 0)
-<ul>
-  @foreach ($errors->all() as $error)
-  <li>
-    {{$error}}
-  </li>
-  @endforeach
-</ul>
-@endif
-<form action="/add" method="post">
+<form action="/delete" method="POST">
   <table>
     @csrf
+    <tr>
+      <th>
+        id
+      </th>
+      <td>
+        <input type="text" name="id" value="{{$form->id}}">
+      </td>
+    </tr>
     <tr>
       <th>
         name
       </th>
       <td>
-        <input type="text" name="name">
+        <input type="text" name="name" value="{{$form->name}}">
       </td>
     </tr>
     <tr>
@@ -48,7 +47,7 @@
         age
       </th>
       <td>
-        <input type="text" name="age">
+        <input type="text" name="age" value="{{$form->age}}">
       </td>
     </tr>
     <tr>
@@ -56,7 +55,7 @@
         nationality
       </th>
       <td>
-        <input type="text" name="nationality">
+        <input type="text" name="nationality" value="{{$form->nationality}}">
       </td>
     </tr>
     <tr>
@@ -64,6 +63,7 @@
       <td>
         <button>送信</button>
       </td>
+    </tr>
   </table>
 </form>
 @endsection
