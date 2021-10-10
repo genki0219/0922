@@ -30,4 +30,10 @@ class Author extends Model
     public function book(){
         return $this->hasOne('App\Models\Book');
     }
+    public function books(){
+        return $this->hasMany('App\Models\Book');
+    }
+    public function reviews(){
+        return $this->belongsToMany(Book::class);
+    }
 }

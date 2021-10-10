@@ -8,6 +8,9 @@
     tr:nth-child(odd) td{
       background-color: #FFFFFF;
     }
+    td table {
+      margin: 0 auto;
+    }
     td {
       padding: 25px 40px;
       background-color: #EEEEEE;
@@ -25,22 +28,30 @@
     <th>Author</th>
     <th>Book</th>
   </tr>
-  @foreach ($items as $item)
+  @foreach ($hasItems as $item)
   <tr>
     <td>
       {{$item->getDetail()}}
     </td>
     <td>
-      @if ($item->books != null)
-        <table width="100%">
-          @foreach ($item->books as $obj)
-            <tr>
-              <td>{{ $obj->getTitle() }}</td>
-            </tr>
-          @endforeach
-        </table>
-      @endif
+      <table>
+        @foreach ($item->books as $obj)
+        <tr>
+          <td>{{ $obj->getTitle() }}</td>
+        </tr>
+        @endforeach
+      </table>
     </td>
+  </tr>
+  @endforeach
+</table>
+<table>
+  <tr>
+    <th>Author</th>
+  </tr>
+  @foreach ($noItems as $item)
+  <tr>
+    <td>{{ $item->getDetail() }}</td>
   </tr>
   @endforeach
 </table>
