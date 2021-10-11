@@ -41,3 +41,15 @@ Route::post('/auth', [AuthorController::class,'checkUser']);
 Route::get('/softdelete', function () {
     Person::find(1)->delete();
 });
+Route::get('softdelete/get', function() {
+    $person = Person::onlyTrashed()->get();
+    dd($person);
+});
+Route::get('softdelete/store', function() {
+    $result = Person::onlyTrashed()->restore();
+    echo $result;
+});
+Route::get('softdelete/absolute', function() {
+    $result = Person::onlyTrashed()->forceDelete();
+    echo $result;
+});
