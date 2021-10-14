@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
 use App\Models\Person;
+use App\Models\Product;
 
 Route::get('/home', [AuthorController::class, 'index']);
 Route::get('/add', [AuthorController::class, 'add']);
@@ -53,3 +54,12 @@ Route::get('softdelete/absolute', function() {
     $result = Person::onlyTrashed()->forceDelete();
     echo $result;
 });
+Route::get('uuid',function() {
+    $products = Product::all();
+    foreach($products as $product){
+        echo $product.'<br>';
+    }
+});
+Route::get('fill', [BookController::class,'fillBook']);
+Route::get('create', [BookController::class,'createBook']);
+Route::get('insert', [BookController::class,'insertBook']);
